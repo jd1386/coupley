@@ -9,7 +9,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
+  # Show full error reports and enable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
@@ -34,4 +34,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Initial config as suggested by Devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

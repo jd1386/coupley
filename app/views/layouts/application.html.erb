@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<% flash.each do |key, value| %>
+	<%= content_tag(:div, class: "alert alert-#{key}") do %>
+	  <%= value %>
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	<% end %>
+<% end %>
+
 <%= yield %>
 
 </body>
