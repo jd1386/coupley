@@ -1,0 +1,6 @@
+<h2>Post Stream</h2>
+<div><%= link_to 'New Post', new_post_path %>
+
+<% @posts.each do |post| %>
+	<div><%= post.user.first_name %> >> <%= post.content %> - <%= time_ago_in_words(post.created_at) %> ago</div>
+<% end %>
