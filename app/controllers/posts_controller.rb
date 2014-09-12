@@ -15,9 +15,31 @@ def create
 	@post.user = current_user
 	if @post.save
 		redirect_to posts_path
+		notice = "Successfully created!"
 	else
 		render :new
 	end
+end
+
+def edit
+	@post = Post.find(params[:id])
+end
+
+def update
+	@post = Post.find(params[:id])
+	if @post.update(post_params)
+		redirect_to posts_path
+		notice = "Successfully edited!"
+	else
+		render :edit
+	end
+end
+
+def destroy
+	@post = Post.find(params[:id])
+	@post.destroy
+	redirect_to posts_path
+	notice = "Successfully deleted!"
 end
 
 private
