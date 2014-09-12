@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  resources :replies
+
   root 'home#index'
 
   devise_for :users
