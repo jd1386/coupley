@@ -39,6 +39,13 @@
 
   <div><%= f.submit "Update", class: 'btn btn-lg btn-primary' %></div>
 <% end %>
+<hr>
+
+<div style="display:block">
+  <h4>My Gravatar</h4>
+  <%= image_tag(gravatar_url(current_user), class: "img-circle") %>
+  <%= link_to 'Change', 'http://gravatar.com/emails' %>
+</div>
 
 <hr>
 <h4>Cancel my account</h4>

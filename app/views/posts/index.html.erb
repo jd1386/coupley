@@ -7,10 +7,9 @@
 <% @posts.each do |post| %>
   <li class="media">
     <a class="pull-left" href="#">
-      <img class="media-object" src="https://pbs.twimg.com/profile_images/2838963339/5c70d0d36a46b4b12d557cf37479e7d7.jpeg" alt="..." style="width:64px">
+      <%= image_tag(gravatar_url(post.user), class: "img-circle") %>
     </a>
     <div class="media-body">
-      <h4 class="media-heading"><%= post.user.first_name %></h4>
       <%= post.content %> 
       <p><%= time_ago_in_words(post.created_at) %> ago</p>
 <!-- Reply -->
@@ -18,10 +17,10 @@
 					<% post.replies.each do |reply| %>
       			<div class="media">
   						<a class="pull-left" href="#">
-    						<img class="media-object" src="https://pbs.twimg.com/profile_images/2838963339/5c70d0d36a46b4b12d557cf37479e7d7.jpeg" alt="..." style="width:64px">
+    						<%= image_tag(gravatar_url(reply.user), class: "img-circle") %>
   						</a>
  						  <div class="media-body">
-    						<%= reply.content %> by <%= reply.user.first_name %>
+    						<%= reply.content %>
     						<p><%= time_ago_in_words(reply.created_at) %> ago</p>
   						</div>
 						</div>
