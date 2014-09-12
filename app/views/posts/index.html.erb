@@ -14,8 +14,22 @@
 			<span class="content">
 				<%= post.content %> 
 			</span>
+			
+			<% if post.replies.any? %>
+			<div>
+				<ul>	
+				<% @replies.each do |reply| %>
+					<li>
+						<%= reply.content %> by <%= reply.user.first_name %>
+						<span><%= time_ago_in_words(reply.created_at) %> ago</span>
+					</li>
+				<% end %>
+				</ul>
+			</div>
+			<% end %>
+
 			<span class="action-console">
-				<%= link_to 'Reply' %> 
+				<%= link_to 'Reply', new_post_reply_path(post) %> 
 			</span>
 			<% if current_user == post.user %>
 				<span class="action-console">

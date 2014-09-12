@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
  
-  resources :replies
-
   root 'home#index'
 
   devise_for :users
@@ -15,8 +13,8 @@ Rails.application.routes.draw do
 		resources :posts
 	end
 
- resources :posts
-
- 
+ resources :posts do
+ 		resources :replies
+	end 
 
 end
