@@ -1,42 +1,50 @@
 <div class="col-md-9">
 	<h2>Post Stream</h2>
 	<div><%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %></div>
+	<hr>
 
-	<ul class="posts">
-	<% @posts.each do |post| %>
-		<li>
-			<span class="author">
-				<%= post.user.first_name %>
-			</span>
-			<span class="timestamp">
-				<%= time_ago_in_words(post.created_at) %> ago
-			</span>
-			<span class="content">
-				<%= post.content %> 
-			</span>
-			
-			<% if post.replies.any? %>
-			<div>
-				<ul>	
-				<% @replies.each do |reply| %>
-					<li>
-						<%= reply.content %> by <%= reply.user.first_name %>
-						<span><%= time_ago_in_words(reply.created_at) %> ago</span>
-					</li>
+<ul class="media-list">
+<% @posts.each do |post| %>
+  <li class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="https://pbs.twimg.com/profile_images/2838963339/5c70d0d36a46b4b12d557cf37479e7d7.jpeg" alt="..." style="width:64px">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading"><%= post.user.first_name %></h4>
+      <%= post.content %> 
+      <p><%= time_ago_in_words(post.created_at) %> ago</p>
+<!-- Reply -->
+        <% if post.replies.any? %>
+					<% post.replies.each do |reply| %>
+      			<div class="media">
+  						<a class="pull-left" href="#">
+    						<img class="media-object" src="https://pbs.twimg.com/profile_images/2838963339/5c70d0d36a46b4b12d557cf37479e7d7.jpeg" alt="..." style="width:64px">
+  						</a>
+ 						  <div class="media-body">
+    						<%= reply.content %> by <%= reply.user.first_name %>
+    						<p><%= time_ago_in_words(reply.created_at) %> ago</p>
+  						</div>
+						</div>
+					<% end %>
 				<% end %>
-				</ul>
-			</div>
-			<% end %>
 
-			<span class="action-console">
+<span class="action-console">
 				<%= link_to 'Reply', new_post_reply_path(post) %> 
 			</span>
-			<% if current_user == post.user %>
+
+			
+
+    </div>
+    <% if current_user == post.user %>
 				<span class="action-console">
-				|	<%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+				<%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
 				</span>
 			<% end %>
-		</li>
-	<% end %>
-	</ul>
+    <hr></hr>
+  </li>
+  <% end %>
+
+</ul>
+
+
 </div>

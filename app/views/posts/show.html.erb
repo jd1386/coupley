@@ -1,0 +1,42 @@
+<ul class="posts">
+
+		<li>
+			<span class="author">
+				<%= @post.user.first_name %>
+			</span>
+			<span class="timestamp">
+				<%= time_ago_in_words(@post.created_at) %> ago
+			</span>
+			<span class="content">
+				<%= @post.content %> 
+			</span>
+			
+			<% if @post.replies.any? %>
+			<div>
+				<ul>	
+				<% @replies.each do |reply| %>
+					<li>
+						<%= reply.content %> by <%= reply.user.first_name %>
+						<span><%= time_ago_in_words(reply.created_at) %> ago</span>
+						<div><%= reply.post_id %></div>
+					</li>
+				<% end %>
+				</ul>
+			</div>
+			<% end %>
+
+			
+
+			<span class="action-console">
+				<%= link_to 'Reply', new_post_reply_path(@post) %> 
+			</span>
+
+			<% if current_user == @post.user %>
+				<span class="action-console">
+				|	<%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+				</span>
+			<% end %>
+
+		</li>
+	
+	</ul>

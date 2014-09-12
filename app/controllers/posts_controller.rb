@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
-
+before_action :set_post, except: [:index, :new, :create]
 
 def index
 	@posts = Post.all
-	@replies = Reply.all
 	
+end
+
+def show
+	@replies = @post.replies
 end
 
 def new
@@ -23,11 +26,9 @@ def create
 end
 
 def edit
-	@post = Post.find(params[:id])
 end
 
 def update
-	@post = Post.find(params[:id])
 	if @post.update(post_params)
 		redirect_to posts_path
 		notice = "Successfully edited!"
@@ -37,16 +38,19 @@ def update
 end
 
 def destroy
-	@post = Post.find(params[:id])
 	@post.destroy
 	redirect_to posts_path
 	notice = "Successfully deleted!"
 end
 
 private
-
+	
 	def post_params
 		params.require(:post).permit(:content)
+	end
+
+	def set_post
+		@post = Post.find(params[:id])
 	end
 
 end

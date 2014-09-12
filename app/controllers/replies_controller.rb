@@ -1,9 +1,14 @@
 class RepliesController < ApplicationController
 before_action :set_post
 
+def new
+	@reply = Reply.new
+end
+
 def create
 	@reply = @post.replies.new(reply_params)
 	@reply.user = current_user
+	@reply.post = @post
 	
 	if @reply.save
 		redirect_to posts_path
