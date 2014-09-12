@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 		get '/signup', to: 'devise/registrations#new', as: 'signup'
 	end
 
- 
+	resources :users do
+		resources :posts
+	end
+
+ resources :posts
 
  
 
