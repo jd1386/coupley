@@ -3,7 +3,7 @@ before_action :set_post, except: [:index, :new, :create]
 
 def index
 	@posts = Post.all
-	
+	@post = Post.new
 end
 
 def show

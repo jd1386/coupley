@@ -1,6 +1,6 @@
 <div class="col-md-9">
 	<h2>Post Stream</h2>
-	<div><%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %></div>
+    <div><%= render 'form' %></div>
 	<hr>
 
 <ul class="media-list">
@@ -27,17 +27,16 @@
 					<% end %>
 				<% end %>
 
-<span class="action-console">
+      <div class="action-console">
 				<%= link_to 'Reply', new_post_reply_path(post) %> 
-			</span>
-
-			
+			</div>
 
     </div>
+
     <% if current_user == post.user %>
-				<span class="action-console">
+				<div class="action-console">
 				<%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
-				</span>
+				</div>
 			<% end %>
     <hr></hr>
   </li>
