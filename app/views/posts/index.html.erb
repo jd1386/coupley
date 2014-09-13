@@ -7,21 +7,21 @@
 <% @posts.each do |post| %>
   <li class="media">
     <a class="pull-left" href="#">
-      <%= image_tag(gravatar_url(post.user), class: "img-circle") %>
+      <%= image_tag(gravatar_url(post.user), width: 43, class: "img-circle") %>
     </a>
     <div class="media-body">
       <%= post.content %> 
-      <p><%= time_ago_in_words(post.created_at) %> ago</p>
+      <p class="muted"><%= time_ago_in_words(post.created_at) %> ago</p>
 <!-- Reply -->
         <% if post.replies.any? %>
 					<% post.replies.each do |reply| %>
       			<div class="media">
   						<a class="pull-left" href="#">
-    						<%= image_tag(gravatar_url(reply.user), class: "img-circle") %>
+    						<%= image_tag(gravatar_url(reply.user), width: 38, class: "img-circle") %>
   						</a>
  						  <div class="media-body">
     						<%= reply.content %>
-    						<p><%= time_ago_in_words(reply.created_at) %> ago</p>
+    						<p class="muted"><%= time_ago_in_words(reply.created_at) %> ago</p>
   						</div>
 						</div>
 					<% end %>
