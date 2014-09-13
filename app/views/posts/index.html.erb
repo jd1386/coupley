@@ -1,5 +1,5 @@
 <div class="col-md-9">
-	<h2>Post Stream</h2>
+	<h3>What's on your mind?</h3>
     <div><%= render 'form' %></div>
 	<hr>
 
@@ -12,7 +12,9 @@
     <div class="media-body">
       <%= post.content %> 
       <p class="muted"><%= time_ago_in_words(post.created_at) %> ago</p>
-<!-- Reply -->
+
+      <!-- Reply -->
+
         <% if post.replies.any? %>
 					<% post.replies.each do |reply| %>
       			<div class="media">
@@ -27,9 +29,32 @@
 					<% end %>
 				<% end %>
 
-      <div class="action-console">
-				<%= link_to 'Reply', new_post_reply_path(post) %> 
-			</div>
+      <!-- -->  
+
+      <!-- embed form to create a new reply -->
+      <%= form_for [post, @reply] do |f| %>
+      <form class="form-horizontal" role="form">
+        <ul class="media-list">
+          <li class="media">
+            <a class="pull-left" href="#">
+              <%= image_tag(gravatar_url(current_user), width: 38, class: "img-circle") %>
+            </a>
+            <div class="media-body">
+              <div class="form-group">
+                <div class="col-sm-8">
+                  <%= f.text_field :content, size: 40, class: 'form-control' %>
+                </div>
+                <div class="col-sm-3">
+                  <%= f.submit value: "Reply", class: "btn btn-default" %>
+                </div>
+              </div>
+            </div>      
+          </li>
+        </ul>
+      </form>
+      <% end %>
+      <!-- end form -->
+
 
     </div>
 

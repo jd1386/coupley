@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
+before_action :require_signin
 before_action :set_post, except: [:index, :new, :create]
+
 
 def index
 	@posts = Post.all
 	@post = Post.new
+	@reply = Reply.new
 end
 
 def show
@@ -51,6 +54,10 @@ private
 
 	def set_post
 		@post = Post.find(params[:id])
+	end
+
+	def require_signin
+		redirect_to root_url unless user_signed_in?
 	end
 
 end
