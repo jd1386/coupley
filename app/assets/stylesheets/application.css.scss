@@ -85,6 +85,14 @@ ul.posts {
 	padding: 20px;
 }
 
+.thumbnail a > img {
+	width: 100%;
+}
+/* post-image modal */
+.modal-dialog {
+	width: 635px;
+}
+
 hr {
 	border-top: 1px solid #dadada;
 }

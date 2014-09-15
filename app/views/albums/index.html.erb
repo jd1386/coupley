@@ -1,0 +1,45 @@
+<div class="col-md-12">
+
+<h3>Albums Index</h3>
+
+<div class="row">
+<% @posts.each do |post| %>
+	<% if post.image.exists? %>		
+		<div class="col-xs-6 col-md-3">
+			<div class="thumbnail">
+				<a href="#" data-toggle="modal", data-target="#imageModal-<%= post.id %>">
+					<%= image_tag post.image.url(:medium), data: { src: "holder.js/300x300" } %>
+				</a>
+				<div class="caption">
+	        	<p class="muted"><%= time_ago_in_words(post.created_at) %> ago</p>
+				</div>
+			</div>
+			
+
+		<!-- imageModal -->
+		<div class="modal fade" id="imageModal-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="imageModalLabel"><%= image_tag(gravatar_url(post.user), width: 43, class: "img-circle") %> <%= post.user.first_name %></h4>
+		      </div>
+		      <div class="modal-body">
+		        <%= image_tag post.image.url(:large) %>
+		      </div>
+		      <div class="modal-footer">
+						<p>Posted by <%= post.user.first_name %> <%= time_ago_in_words(post.created_at) %> ago
+      		</div>
+		    </div>
+		  </div>
+		</div>
+		<!-- end imageModal -->
+
+	</div> <!-- end col-xs-6 col-md-3 -->
+<% end %>
+<% end %>
+</div> <!-- end row -->
+
+
+
+</div>
