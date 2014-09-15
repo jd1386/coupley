@@ -13,7 +13,9 @@
       <%= post.content %> 
       <!-- Display image if any -->
       <% if post.image.exists? %>
-        <%= image_tag post.image.url(:large) %>
+        <div class="post-image">
+          <%= image_tag post.image.url(:large) %>
+        </div>
       <% end %>
       <p class="muted"><%= time_ago_in_words(post.created_at) %> ago</p>
 
