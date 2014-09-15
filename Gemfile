@@ -32,3 +32,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
+
+# Use paperclip to upload, store images and aws-sdk to store them on Amazon
+gem 'paperclip', "~> 4.2"
+gem 'aws-sdk'
