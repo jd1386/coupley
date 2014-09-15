@@ -1,7 +1,38 @@
 <div class="col-md-9">
-	<h3>What's on your mind?</h3>
-    <div><%= render 'form' %></div>
-	<hr>
+
+<div class="select-post-type">
+  <ul class="nav nav-tabs" role="tablist">
+    <li>
+      <button type="button" class="btn btn-danger" data-toggle="tab" data-target="#text">
+        Text
+      </button>
+    </li>
+    <li>
+      <button type="button" class="btn btn-danger" data-toggle="tab" data-target="#photo">
+        Photo
+      </button>
+    </li>
+    <li>
+      <button type="button" class="btn btn-danger" data-toggle="tab" data-target="#link">
+        Link
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane" id="text">
+      <div><%= render 'form' %></div>
+    </div>
+    <div class="tab-pane" id="photo">
+      <div><%= render 'form_photo' %></div>
+    </div>
+    <div class="tab-pane" id="link">
+      <div>Link form comes here</div>
+    </div>
+  </div>
+</div>
+
+<hr>
 
 <ul class="media-list">
 <% @posts.each do |post| %>

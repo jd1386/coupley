@@ -1,0 +1,25 @@
+<%= form_for @post, :html => { :multipart => true } do |f| %>
+<form class="form-horizontal" role="form">
+
+<ul class="media-list">
+	<li class="media">
+	    <a class="pull-left" href="#">
+	      <%= image_tag(gravatar_url(current_user), width: 43, class: "img-circle") %>
+	    </a>
+	    <div class="media-body">
+				<div class="form-group">
+					<div class="input-group">
+						<%= f.file_field :image %>
+					</div>
+				</div>
+
+				<div class="btn-group">
+					<%= f.submit value: "Post", class: "btn btn-lg btn-primary" %>
+				</div>
+			</div>
+	</li>
+</ul>
+
+</form>
+<% end %>
+

@@ -47,6 +47,14 @@ p.muted {
 }
 
 /* Posts */
+.select-post-type .nav-tabs {
+	border: none;
+	padding-bottom: 25px;
+
+	li {
+		padding-right: 8px;
+	}
+}
 
 ul.posts {
 	list-style: none;
