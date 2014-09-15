@@ -11,6 +11,7 @@
 					<div class="input-group">
 						<%= f.text_area :content, rows: 5, cols: 100, class: 'form-control' %>
 					</div>
+						<%= f.file_field :image, :multiple => true %>
 				</div>
 
 				<div class="btn-group">

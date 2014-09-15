@@ -11,6 +11,10 @@
     </a>
     <div class="media-body">
       <%= post.content %> 
+      <!-- Display image if any -->
+      <% if post.image.exists? %>
+        <%= image_tag post.image.url(:large) %>
+      <% end %>
       <p class="muted"><%= time_ago_in_words(post.created_at) %> ago</p>
 
       <!-- Reply -->
