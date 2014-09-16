@@ -13,6 +13,8 @@ resources :users do
 	resources :posts
 end
 
+get 'posts/filter/:scope', to: 'posts#index', as: :filtered_posts
+
 resources :posts do
 		resources :replies
 end 

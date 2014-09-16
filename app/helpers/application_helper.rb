@@ -5,7 +5,7 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
-  
+# check if the given url has http protocol and if not, append it  
   def url_with_protocol(url)
     /^http/i.match(url) ? url : "http://#{url}"
   end

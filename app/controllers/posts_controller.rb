@@ -4,7 +4,15 @@ before_action :set_post, except: [:index, :new, :create]
 
 
 def index
-	@posts = Post.all
+	case params[:scope]
+		when "has_photos"
+			@posts = Post.has_photos
+		when "has_link"
+			@posts = Post.has_link
+		else
+			@posts = Post.all
+		end
+
 	@post = Post.new
 	@reply = Reply.new
 end
@@ -33,7 +41,7 @@ end
 
 def update
 	if @post.update(post_params)
-		redirect_to posts_path
+		redirect_to :back
 		notice = "Successfully edited!"
 	else
 		render :edit
