@@ -61,7 +61,7 @@
       <!-- Reply -->
 
         <% unless post.replies.blank? %>
-					<% post.replies.each do |reply| %>
+					<% post.replies.reverse_each do |reply| %>
       			<div class="media">
   						<a class="pull-left" href="#">
     						<%= image_tag(gravatar_url(reply.user), width: 38, class: "img-circle") %>
