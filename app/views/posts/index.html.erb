@@ -27,7 +27,7 @@
       <div><%= render 'form_photo' %></div>
     </div>
     <div class="tab-pane" id="link">
-      <div>Link form comes here</div>
+      <div><%= render 'form_link' %></div>
     </div>
   </div>
 </div>
@@ -41,6 +41,10 @@
       <%= image_tag(gravatar_url(post.user), width: 43, class: "img-circle") %>
     </a>
     <div class="media-body">
+      <!-- Display link if any -->
+      <% if post.link %>
+        <h4 class="media-heading"><%= link_to post.link, raw(post.link), target: '_blank' %></h4>
+      <% end %>
       <!-- Display title if any -->
       <% if post.title %>
         <h4 class="media-heading"><%= post.title %></h4>
