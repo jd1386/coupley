@@ -15,7 +15,7 @@ has_attached_file :image,
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-scope :has_photos, -> { where('image_file_name != ?', nil).order(:created_at) }
-scope :has_link, -> { where('link != ?', nil).order(:created_at) } 
+scope :has_photos, -> { where('image_file_name IS NOT NULL').order(:created_at) }
+scope :has_link, -> { where('link IS NOT NULL').order(:created_at) } 
 
 end
