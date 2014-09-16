@@ -11,14 +11,14 @@ def index
 			@posts = Post.has_link
 		else
 			@posts = Post.all
-		end
+	end
 
 	@post = Post.new
 	@reply = Reply.new
 end
 
 def show
-	@replies = @post.replies
+	
 end
 
 def new

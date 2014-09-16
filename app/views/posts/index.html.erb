@@ -60,7 +60,7 @@
 
       <!-- Reply -->
 
-        <% if post.replies.any? %>
+        <% unless post.replies.blank? %>
 					<% post.replies.each do |reply| %>
       			<div class="media">
   						<a class="pull-left" href="#">
