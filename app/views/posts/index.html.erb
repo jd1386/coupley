@@ -43,7 +43,7 @@
     <div class="media-body">
       <!-- Display link if any -->
       <% if post.link %>
-        <h4 class="media-heading"><%= link_to post.link, raw(post.link), target: '_blank' %></h4>
+        <h4 class="media-heading"><%= link_to post.link, url_with_protocol(post.link), target: '_blank' %></h4>
       <% end %>
       <!-- Display title if any -->
       <% if post.title %>

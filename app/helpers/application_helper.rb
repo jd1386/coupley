@@ -5,4 +5,10 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
+  
+  def url_with_protocol(url)
+    /^http/i.match(url) ? url : "http://#{url}"
+  end
+
+
 end
