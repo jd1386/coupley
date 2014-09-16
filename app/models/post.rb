@@ -18,4 +18,6 @@ has_attached_file :image,
 scope :has_photos, -> { where('image_file_name IS NOT NULL').order(:created_at) }
 scope :has_link, -> { where('link IS NOT NULL').order(:created_at) } 
 
+# delete me after paperclip-aws test on heroku
+
 end
