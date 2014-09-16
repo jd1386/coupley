@@ -18,7 +18,7 @@ def index
 end
 
 def show
-	
+	# comment to test paperclip-aws
 end
 
 def new
