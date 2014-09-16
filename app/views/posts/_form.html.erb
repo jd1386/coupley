@@ -12,7 +12,7 @@
 						<%= f.text_field :title, size: 100, placeholder: "제목 (optional)", class: 'form-control' %>
 					</div>
 					<div class="input-group">
-						<%= f.text_area :content, rows: 5, cols: 102, placeholder: "내용", class: 'form-control' %>
+						<%= f.cktext_area :content, rows: 5, cols: 102, placeholder: "내용", :ckeditor => {:toolbar => 'Basic'} %>
 					</div>
 				</div>
 

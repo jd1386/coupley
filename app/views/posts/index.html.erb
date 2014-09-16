@@ -45,7 +45,7 @@
       <% if post.title %>
         <h4 class="media-heading"><%= post.title %></h4>
       <% end %>
-      <%= post.content %> 
+      <%= raw(post.content) %> 
       <!-- Display image if any -->
       <% if post.image.exists? %>
         <div class="post-image">
