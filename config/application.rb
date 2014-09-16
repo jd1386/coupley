@@ -15,5 +15,7 @@ module Coupley
     config.time_zone = 'Seoul'
     config.active_record.default_timezone = :local
     config.active_record.record_timestamps = true
+
+    config.serve_static_assets = true
   end
 end
