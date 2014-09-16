@@ -41,6 +41,10 @@
       <%= image_tag(gravatar_url(post.user), width: 43, class: "img-circle") %>
     </a>
     <div class="media-body">
+      <!-- Display title if any -->
+      <% if post.title %>
+        <h4 class="media-heading"><%= post.title %></h4>
+      <% end %>
       <%= post.content %> 
       <!-- Display image if any -->
       <% if post.image.exists? %>
