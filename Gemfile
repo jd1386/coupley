@@ -41,3 +41,8 @@ gem 'will_paginate'
 
 # Use byebug instead of Debugger, for the latter is not compatible with Ruby 2.1.x
 gem 'byebug'
+
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm', github: "capistrano/rvm"

@@ -10,6 +10,7 @@ validates :user_id, presence: true
 
 has_attached_file :image, 
 	:styles => { large: "600x600>", medium: "300x300>", thumb: "150x150>" },
+	:path => ":rails_root/public/system/image/:style/:hash.:extension",
 	:url => "/system/image/:style/:hash.:extension",
   :hash_secret => "longSecretString" 
 

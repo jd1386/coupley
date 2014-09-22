@@ -18,3 +18,6 @@
 # Ignore all image files uploaded to public/system/
 public/system/*.jpg
 public/system/*.png
+
+# Ignore bin
+bin/

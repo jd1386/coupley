@@ -20,7 +20,7 @@ end
 
 def create
 	@post = current_user.posts.build(post_params)
-
+	
 	if @post.save
 		redirect_to posts_path, notice: "Post created." 
 	else
