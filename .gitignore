@@ -16,8 +16,8 @@
 /tmp
 
 # Ignore all image files uploaded to public/system/
-public/system/*.jpg
-public/system/*.png
+public/system/
+public/system/
 
 # Ignore bin
 bin/
