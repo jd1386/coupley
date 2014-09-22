@@ -10,29 +10,21 @@ def index
 		when "has_link"
 			@posts = Post.has_link
 		else
-			@posts = Post.all
+			@posts = Post.paginate(:page => params[:page], :per_page => 10)
 	end
 
-	@post = Post.new
-	@reply = Reply.new
+	@post = current_user.posts.build
+	@new_reply = @post.replies.build
 end
 
-def show
-	# comment to test paperclip-aws
-end
-
-def new
-	@post = Post.new
-end
 
 def create
-	@post = Post.new(post_params)
-	@post.user = current_user
+	@post = current_user.posts.build(post_params)
+
 	if @post.save
-		redirect_to posts_path
-		notice = "Successfully created!"
+		redirect_to posts_path, notice: "Post created." 
 	else
-		render :new
+		render :new	
 	end
 end
 
@@ -41,8 +33,7 @@ end
 
 def update
 	if @post.update(post_params)
-		redirect_to :back
-		notice = "Successfully edited!"
+		redirect_to posts_path, notice: "Successfully edited!"
 	else
 		render :edit
 	end
@@ -63,6 +54,7 @@ private
 	def set_post
 		@post = Post.find(params[:id])
 	end
+
 
 	def require_signin
 		redirect_to root_url unless user_signed_in?

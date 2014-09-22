@@ -1,3 +1,5 @@
+
+<div id="post-form">
 <script src="//cdn.ckeditor.com/4.4.4/basic/ckeditor.js"></script>
 
 <%= form_for @post, :html => { :multipart => true } do |f| %>
@@ -14,11 +16,9 @@
 						<%= f.text_field :title, size: 120, placeholder: "제목 (optional)", class: 'form-control' %>
 					</div>
 					<div class="input-group">
-						<%= f.text_area :content, rows: 5, cols: 102, placeholder: "내용", id:"ckeditor"%>
+						<%= f.text_area :content, rows: 5, cols: 103, placeholder: "내용", id:"ckeditor"%>
 					</div>
-						<script>
-              CKEDITOR.replace( 'ckeditor' );
-            </script>
+				
 				</div>
 
 				<div class="btn-group">
@@ -30,4 +30,4 @@
 
 </form>
 <% end %>
-
+</div>

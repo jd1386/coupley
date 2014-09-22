@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 
 group :development, :test do
 	gem 'sqlite3'
@@ -36,3 +36,8 @@ gem 'devise'
 # Use paperclip to upload, store images and aws-sdk to store them on Amazon
 gem 'paperclip', "~> 4.2"
 gem 'aws-sdk'
+
+gem 'will_paginate'
+
+# Use byebug instead of Debugger, for the latter is not compatible with Ruby 2.1.x
+gem 'byebug'

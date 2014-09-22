@@ -1,22 +1,11 @@
+
 <div class="col-md-9">
 
 <div class="select-post-type">
   <ul class="nav nav-tabs" role="tablist">
-    <li>
-      <button type="button" class="btn btn-danger" data-toggle="tab" data-target="#text">
-        Text
-      </button>
-    </li>
-    <li>
-      <button type="button" class="btn btn-danger" data-toggle="tab" data-target="#photo">
-        Photo
-      </button>
-    </li>
-    <li>
-      <button type="button" class="btn btn-danger" data-toggle="tab" data-target="#link">
-        Link
-      </button>
-    </li>
+    <li><button type="button" class="btn btn-danger" data-toggle="tab" data-target="#text">Text</button></li>
+    <li><button type="button" class="btn btn-danger" data-toggle="tab" data-target="#photo">Photo</button></li>
+    <li><button type="button" class="btn btn-danger" data-toggle="tab" data-target="#link">Link</button></li>
   </ul>
 
   <div class="tab-content">
@@ -34,86 +23,12 @@
 
 <hr>
 
-<ul class="media-list">
-<% @posts.each do |post| %>
-  <li class="media">
-    <a class="pull-left" href="#">
-      <%= image_tag(gravatar_url(post.user), width: 43, class: "img-circle") %>
-    </a>
-    <div class="media-body">
-      <!-- Display link if any -->
-      <% if post.link %>
-        <h4 class="media-heading"><%= link_to post.link, url_with_protocol(post.link), target: '_blank' %></h4>
-      <% end %>
-      <!-- Display title if any -->
-      <% if post.title %>
-        <h4 class="media-heading"><%= post.title %></h4>
-      <% end %>
-      <%= raw(post.content) %> 
-      <!-- Display image if any -->
-      <% if post.image.exists? %>
-        <div class="post-image">
-          <%= image_tag post.image.url(:large) %>
-        </div>
-      <% end %>
-      <p class="muted"><%= time_ago_in_words(post.created_at) %> ago</p>
-
-      <!-- Reply -->
-
-        <% unless post.replies.blank? %>
-					<% post.replies.reverse_each do |reply| %>
-      			<div class="media">
-  						<a class="pull-left" href="#">
-    						<%= image_tag(gravatar_url(reply.user), width: 38, class: "img-circle") %>
-  						</a>
- 						  <div class="media-body">
-    						<%= raw(reply.content) %>
-    						<p class="muted"><%= time_ago_in_words(reply.created_at) %> ago</p>
-  						</div>
-						</div>
-					<% end %>
-				<% end %>
-
-      <!-- -->  
-
-      <!-- embed form to create a new reply -->
-      <%= form_for [post, @reply] do |f| %>
-      <form class="form-horizontal" role="form">
-        <ul class="media-list">
-          <li class="media">
-            <a class="pull-left" href="#">
-              <%= image_tag(gravatar_url(current_user), width: 38, class: "img-circle") %>
-            </a>
-            <div class="media-body">
-              <div class="form-group">
-                <div class="col-sm-8">
-                  <%= f.text_field :content, size: 40, class: 'form-control' %>
-                </div>
-                <div class="col-sm-3">
-                  <%= f.submit value: "Reply", class: "btn btn-default" %>
-                </div>
-              </div>
-            </div>      
-          </li>
-        </ul>
-      </form>
-      <% end %>
-      <!-- end form -->
-
-
-    </div>
-
-    <% if current_user == post.user %>
-				<div class="action-console">
-				<%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Delete', post_path(post), method: :delete %>
-				</div>
-			<% end %>
-    <hr></hr>
-  </li>
-  <% end %>
-
+<ul class="media-list" id="posts-list">
+  <!-- Display each post -->
+  <%= render 'posts' %>
 </ul>
 
+<%= will_paginate @posts %>
 
 </div> <!-- end col-md-9 -->
 
